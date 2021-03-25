@@ -15,27 +15,39 @@ namespace Dictionary_
             If you have time, convert #3 to getting input from the user and making sure the key doesn't exist prior to 
             adding it */
 
-            Dictionary<string, double> totals = new Dictionary<string, double>();
-            string answer;
+            Dictionary<string, List<double>> courseGrades = new Dictionary<string, List<double>>();
 
-            do
+            courseGrades.Add("MIS3013", new List<double>());
+            courseGrades["MIS3013"].Add(0.75);
+            courseGrades["MIS3013"].Add(0.83);
+            courseGrades["MIS3013"].Add(0.9);
+
+            List<double> mis3033Grades = new List<double>();
+            mis3033Grades.Add(80);
+            mis3033Grades.Add(95);
+            mis3033Grades.Add(100);
+            courseGrades.Add("MIS3033", mis3033Grades);
+
+            courseGrades.Add("MIS3083", new List<double>());
+            courseGrades["MIS3083"].Add(0.95);
+            courseGrades["MIS3083"].Add(0.7);
+            courseGrades["MIS3083"].Add(0.97);
+
+            foreach (string courseCode in courseGrades.Keys)
             {
-                Console.WriteLine($"Enter the course code. ex. MIS3013");
-                string code = Console.ReadLine().ToUpper();
+                List<double> grades = courseGrades[courseCode];
 
-                if (totals.ContainsKey(code) == false)
+                foreach (double k in grades)
                 {
-                    totals.Add(code, 1);
+                    Console.WriteLine(k);
+                    
                 }
-                else
+                for (int i = 0; i < grades.Count; i++)
                 {
-                    totals[code] = totals[code] + 1;
+                                  
                 }
+            }
 
-
-                Console.WriteLine($"Do you want to enter another course?");
-                answer = Console.ReadLine();
-            } while (answer.ToLower()[0] == 'y');
 
 
         }
