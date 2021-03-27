@@ -18,9 +18,9 @@ namespace Dictionary_
             Dictionary<string, List<double>> courseGrades = new Dictionary<string, List<double>>();
 
             courseGrades.Add("MIS3013", new List<double>());
-            courseGrades["MIS3013"].Add(0.75);
-            courseGrades["MIS3013"].Add(0.83);
-            courseGrades["MIS3013"].Add(0.9);
+            courseGrades["MIS3013"].Add(75);
+            courseGrades["MIS3013"].Add(83);
+            courseGrades["MIS3013"].Add(90);
 
             List<double> mis3033Grades = new List<double>();
             mis3033Grades.Add(80);
@@ -29,23 +29,26 @@ namespace Dictionary_
             courseGrades.Add("MIS3033", mis3033Grades);
 
             courseGrades.Add("MIS3083", new List<double>());
-            courseGrades["MIS3083"].Add(0.95);
-            courseGrades["MIS3083"].Add(0.7);
-            courseGrades["MIS3083"].Add(0.97);
+            courseGrades["MIS3083"].Add(95);
+            courseGrades["MIS3083"].Add(70);
+            courseGrades["MIS3083"].Add(97);
 
+            double average = 0;
+            double other = 0;
+            
             foreach (string courseCode in courseGrades.Keys)
             {
                 List<double> grades = courseGrades[courseCode];
+                double sum = 0;
 
-                foreach (double k in grades)
+                foreach (double grade in grades)
                 {
-                    Console.WriteLine(k);
-                    
+                    other = grade;
+                    sum = sum + grade;
+                    average = sum / grades.Count / 100;
+                    Console.WriteLine(grade.ToString("N0"));
                 }
-                for (int i = 0; i < grades.Count; i++)
-                {
-                                  
-                }
+                Console.WriteLine($"The average for {courseCode} is {average.ToString("P2")}");
             }
 
 
